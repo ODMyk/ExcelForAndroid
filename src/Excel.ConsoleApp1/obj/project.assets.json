@@ -1,0 +1,127 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "Antlr4.Runtime.Standard/4.13.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Antlr4.Runtime.Standard.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Antlr4.Runtime.Standard.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Excel.Parsing/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Antlr4.Runtime.Standard": "4.13.1"
+        },
+        "compile": {
+          "bin/placeholder/Excel.Parsing.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Excel.Parsing.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Antlr4.Runtime.Standard/4.13.1": {
+      "sha512": "Da5+i4kFHUseJRZGcBG5fmZGpA/Ns180ibrQMxgZzjpQOnENVvSL5gi5HZ8Ncz8/AR2WsKbOg2lMBzjz0HUQcA==",
+      "type": "package",
+      "path": "antlr4.runtime.standard/4.13.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "antlr4.runtime.standard.4.13.1.nupkg.sha512",
+        "antlr4.runtime.standard.nuspec",
+        "lib/net45/Antlr4.Runtime.Standard.dll",
+        "lib/net45/Antlr4.Runtime.Standard.xml",
+        "lib/netstandard2.0/Antlr4.Runtime.Standard.dll",
+        "lib/netstandard2.0/Antlr4.Runtime.Standard.xml"
+      ]
+    },
+    "Excel.Parsing/1.0.0": {
+      "type": "project",
+      "path": "../Excel.Parsing/Excel.Parsing.csproj",
+      "msbuildProject": "../Excel.Parsing/Excel.Parsing.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "Excel.Parsing >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/dmyko/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.ConsoleApp1/ConsoleApp1.csproj",
+      "projectName": "ConsoleApp1",
+      "projectPath": "/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.ConsoleApp1/ConsoleApp1.csproj",
+      "packagesPath": "/home/dmyko/.nuget/packages/",
+      "outputPath": "/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.ConsoleApp1/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/dmyko/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "/usr/share/dotnet/library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/Excel.Parsing.csproj": {
+              "projectPath": "/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/Excel.Parsing.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.11, 7.0.11]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.111/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

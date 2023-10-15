@@ -1,0 +1,12 @@
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/bin/Debug/net7.0/Excel.Parsing.deps.json
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/bin/Debug/net7.0/Excel.Parsing.dll
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/bin/Debug/net7.0/Excel.Parsing.pdb
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/obj/Debug/net7.0/Excel.Parsing.csproj.AssemblyReference.cache
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/obj/Debug/net7.0/Excel.Parsing.GeneratedMSBuildEditorConfig.editorconfig
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/obj/Debug/net7.0/Excel.Parsing.AssemblyInfoInputs.cache
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/obj/Debug/net7.0/Excel.Parsing.AssemblyInfo.cs
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/obj/Debug/net7.0/Excel.Parsing.csproj.CoreCompileInputs.cache
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/obj/Debug/net7.0/Excel.Parsing.dll
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/obj/Debug/net7.0/refint/Excel.Parsing.dll
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/obj/Debug/net7.0/Excel.Parsing.pdb
+/home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/obj/Debug/net7.0/ref/Excel.Parsing.dll
