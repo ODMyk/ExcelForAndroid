@@ -1,64 +1,59 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 using Antlr4.Runtime.Misc;
 
 namespace Excel.Parsing;
 
-class GrammarVisitor : GrammarBaseVisitor<double>
+class GrammarVisitor : GrammarBaseVisitor<bool>
 {
-    //таблиця ідентифікаторів (тут для прикладу)
-    //в лабораторній роботі заміните на свою!!!!
-    private IDictionary<string, double> tableIdentifier;
-
-    public GrammarVisitor(IDictionary<string, double> table)
-    {
-        tableIdentifier = table;
-    }
-
-    public override double VisitCompileUnit(GrammarParser.CompileUnitContext context)
+    public override bool VisitCompileUnit(GrammarParser.CompileUnitContext context)
     {
         return Visit(context.expression());
     }
 
-    public override double VisitNumberExpr(GrammarParser.NumberExprContext context)
+    public override bool VisitNumberExpr(GrammarParser.NumberExprContext context)
     {
         var result = double.Parse(context.GetText());
+        Debug.WriteLine(result);
+
+        return result != 0.0;
+    }
+
+    public override bool VisitBooleanExpr(GrammarParser.BooleanExprContext context)
+    {
+        var result = bool.Parse(context.GetText());
         Debug.WriteLine(result);
 
         return result;
     }
 
     //IdentifierExpr
-    public override double VisitIdentifierExpr(GrammarParser.IdentifierExprContext context)
+    public override bool VisitIdentifierExpr(GrammarParser.IdentifierExprContext context)
     {
         var result = context.GetText();
-        double value;
-        //видобути значення змінної з таблиці
-        if (tableIdentifier.TryGetValue(result.ToString(), out value))
+        var editedCellName = Calculator.TableP.EvaluatingCell;
+        var resultCell = Calculator.TableP.Cells[result];
+        Calculator.TableP.Cells[editedCellName].DependsOn.Add(result);
+        if (Calculator.TableP.HasCyclicDependency(result))
         {
-            return value;
+            throw new System.Exception("Invalid Expression");
         }
-        else
+
+        if (!resultCell.AppearsIn.Contains(editedCellName))
         {
-            return 0.0;
+            resultCell.AppearsIn.Add(editedCellName);
         }
+
+        return resultCell.Value;
     }
 
-    public override double VisitParenthesizedExpr(GrammarParser.ParenthesizedExprContext context)
+    public override bool VisitParenthesizedExpr(GrammarParser.ParenthesizedExprContext context)
     {
         return Visit(context.expression());
     }
 
-    public override double VisitExponentialExpr(GrammarParser.ExponentialExprContext context)
-    {
-        var left = WalkLeft(context);
-        var right = WalkRight(context);
-
-        Debug.WriteLine("{0} ^ {1}", left, right);
-        return System.Math.Pow(left, right);
-    }
-
-    public override double VisitAdditiveExpr(GrammarParser.AdditiveExprContext context)
+    public override bool VisitAdditiveExpr(GrammarParser.AdditiveExprContext context)
     {
         var left = WalkLeft(context);
         var right = WalkRight(context);
@@ -66,16 +61,16 @@ class GrammarVisitor : GrammarBaseVisitor<double>
         if (context.operatorToken.Type == GrammarLexer.ADD)
         {
             Debug.WriteLine("{0} + {1}", left, right);
-            return left + right;
+            return left || right;
         }
         else //GrammarLexer.SUBTRACT
         {
             Debug.WriteLine("{0} - {1}", left, right);
-            return left - right;
+            return left ^ right;
         }
     }
 
-    public override double VisitMultiplicativeExpr(GrammarParser.MultiplicativeExprContext context)
+    public override bool VisitMultiplicativeExpr(GrammarParser.MultiplicativeExprContext context)
     {
         var left = WalkLeft(context);
         var right = WalkRight(context);
@@ -83,83 +78,85 @@ class GrammarVisitor : GrammarBaseVisitor<double>
         if (context.operatorToken.Type == GrammarLexer.MULTIPLY)
         {
             Debug.WriteLine("{0} * {1}", left, right);
-            return left * right;
+            return left && right;
         }
         else //GrammarLexer.DIVIDE
         {
             Debug.WriteLine("{0} / {1}", left, right);
-            return left / right;
+            return left;
         }
     }
 
-    public override double VisitLogicalNotExpr([NotNull] GrammarParser.LogicalNotExprContext context)
+    public override bool VisitLogicalNotExpr([NotNull] GrammarParser.LogicalNotExprContext context)
     {
         var expr = Visit(context.GetRuleContext<GrammarParser.ExpressionContext>(0));
 
         Debug.WriteLine($"NOT {expr}");
-        return expr != 0 ? 0 : 1;
+        return !expr;
     }
 
-    public override double VisitLogicalAndExpr([NotNull] GrammarParser.LogicalAndExprContext context)
+    public override bool VisitLogicalAndExpr([NotNull] GrammarParser.LogicalAndExprContext context)
     {
         var left = WalkLeft(context);
         var right = WalkRight(context);
 
-    Debug.WriteLine($"{left} && {right}");
-        return left * right;
+        Debug.WriteLine($"{left} && {right}");
+        return left && right;
     }
 
-    public override double VisitLogicalOrExpr([NotNull] GrammarParser.LogicalOrExprContext context)
+    public override bool VisitLogicalOrExpr([NotNull] GrammarParser.LogicalOrExprContext context)
     {
         var left = WalkLeft(context);
         var right = WalkRight(context);
 
         Debug.WriteLine($"{left} || {right}");
-        return left + right;
+        return left || right;
     }
 
-    public override double VisitEqualityExpr([NotNull] GrammarParser.EqualityExprContext context)
+    public override bool VisitEqualityExpr([NotNull] GrammarParser.EqualityExprContext context)
     {
         var left = WalkLeft(context);
         var right = WalkRight(context);
 
-        if (context.operatorToken.Type == GrammarLexer.EQUAL) {
+        if (context.operatorToken.Type == GrammarLexer.EQUAL)
+        {
             Debug.WriteLine($"{left} == {right}");
-            return left == right ? 1 : 0;
+            return left == right;
         }
         Debug.WriteLine($"{left} <> {right}");
-        return  left != right ? 1 : 0;
+        return left != right;
     }
 
-    public override double VisitRelationalExpr([NotNull] GrammarParser.RelationalExprContext context)
+    public override bool VisitRelationalExpr([NotNull] GrammarParser.RelationalExprContext context)
     {
         var left = WalkLeft(context);
         var right = WalkRight(context);
 
-        switch (context.operatorToken.Type) {
+        switch (context.operatorToken.Type)
+        {
             case GrammarLexer.GREATER:
                 Debug.WriteLine($"{left} > {right}");
-                return left > right ? 1 : 0;
+                return left && !right;
             case GrammarLexer.GREATER_EQUAL:
                 Debug.WriteLine($"{left} >= {right}");
-                return left >= right ? 1 : 0;
+                return left;
             case GrammarLexer.LESS:
                 Debug.WriteLine($"{left} < {right}");
-                return left < right ? 1 : 0;
+                return !left && right;
             case GrammarLexer.LESS_EQUAL:
                 Debug.WriteLine($"{left} <= {right}");
-                return left <= right ? 1 : 0;
+                return right;
             default:
-                return 0;
+                return false;
         }
     }
 
-    private double WalkLeft(GrammarParser.ExpressionContext context)
+    private bool WalkLeft(GrammarParser.ExpressionContext context)
     {
         return Visit(context.GetRuleContext<GrammarParser.ExpressionContext>(0));
     }
 
-    private double WalkRight(GrammarParser.ExpressionContext context)
+    private bool WalkRight(GrammarParser.ExpressionContext context)
     {
         return Visit(context.GetRuleContext<GrammarParser.ExpressionContext>(1));
     }

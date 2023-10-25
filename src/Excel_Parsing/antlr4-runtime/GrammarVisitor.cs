@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/Grammar.g4 by ANTLR 4.13.1
+// Generated from /home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel_Parsing/Grammar.g4 by ANTLR 4.13.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -29,7 +29,7 @@ using IToken = Antlr4.Runtime.IToken;
 /// </summary>
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
-//[System.CLSCompliant(false)]
+// [System.CLSCompliant(false)]
 public interface IGrammarVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="GrammarParser.compileUnit"/>.
@@ -51,13 +51,6 @@ public interface IGrammarVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitLogicalOrExpr([NotNull] GrammarParser.LogicalOrExprContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>ExponentialExpr</c>
-	/// labeled alternative in <see cref="GrammarParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitExponentialExpr([NotNull] GrammarParser.ExponentialExprContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>EqualityExpr</c>
 	/// labeled alternative in <see cref="GrammarParser.expression"/>.
@@ -114,4 +107,11 @@ public interface IGrammarVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitLogicalAndExpr([NotNull] GrammarParser.LogicalAndExprContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>BooleanExpr</c>
+	/// labeled alternative in <see cref="GrammarParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitBooleanExpr([NotNull] GrammarParser.BooleanExprContext context);
 }

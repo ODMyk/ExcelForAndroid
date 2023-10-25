@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/Grammar.g4 by ANTLR 4.13.1
+// Generated from /home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel_Parsing/Grammar.g4 by ANTLR 4.13.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -33,7 +33,7 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
 [System.Diagnostics.DebuggerNonUserCode]
-//[System.CLSCompliant(false)]
+// [System.CLSCompliant(false)]
 public partial class GrammarBaseListener : IGrammarListener {
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="GrammarParser.compileUnit"/>.
@@ -75,20 +75,6 @@ public partial class GrammarBaseListener : IGrammarListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLogicalOrExpr([NotNull] GrammarParser.LogicalOrExprContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by the <c>ExponentialExpr</c>
-	/// labeled alternative in <see cref="GrammarParser.expression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterExponentialExpr([NotNull] GrammarParser.ExponentialExprContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>ExponentialExpr</c>
-	/// labeled alternative in <see cref="GrammarParser.expression"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitExponentialExpr([NotNull] GrammarParser.ExponentialExprContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>EqualityExpr</c>
 	/// labeled alternative in <see cref="GrammarParser.expression"/>.
@@ -201,6 +187,20 @@ public partial class GrammarBaseListener : IGrammarListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLogicalAndExpr([NotNull] GrammarParser.LogicalAndExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>BooleanExpr</c>
+	/// labeled alternative in <see cref="GrammarParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterBooleanExpr([NotNull] GrammarParser.BooleanExprContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>BooleanExpr</c>
+	/// labeled alternative in <see cref="GrammarParser.expression"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitBooleanExpr([NotNull] GrammarParser.BooleanExprContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/Grammar.g4 by ANTLR 4.13.1
+// Generated from /home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel_Parsing/Grammar.g4 by ANTLR 4.13.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -28,7 +28,7 @@ using IToken = Antlr4.Runtime.IToken;
 /// <see cref="GrammarParser"/>.
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
-[System.CLSCompliant(false)]
+// [System.CLSCompliant(false)]
 public interface IGrammarListener : IParseTreeListener {
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="GrammarParser.compileUnit"/>.
@@ -64,18 +64,6 @@ public interface IGrammarListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitLogicalOrExpr([NotNull] GrammarParser.LogicalOrExprContext context);
-	/// <summary>
-	/// Enter a parse tree produced by the <c>ExponentialExpr</c>
-	/// labeled alternative in <see cref="GrammarParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterExponentialExpr([NotNull] GrammarParser.ExponentialExprContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>ExponentialExpr</c>
-	/// labeled alternative in <see cref="GrammarParser.expression"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitExponentialExpr([NotNull] GrammarParser.ExponentialExprContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>EqualityExpr</c>
 	/// labeled alternative in <see cref="GrammarParser.expression"/>.
@@ -172,4 +160,16 @@ public interface IGrammarListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitLogicalAndExpr([NotNull] GrammarParser.LogicalAndExprContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>BooleanExpr</c>
+	/// labeled alternative in <see cref="GrammarParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterBooleanExpr([NotNull] GrammarParser.BooleanExprContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>BooleanExpr</c>
+	/// labeled alternative in <see cref="GrammarParser.expression"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitBooleanExpr([NotNull] GrammarParser.BooleanExprContext context);
 }

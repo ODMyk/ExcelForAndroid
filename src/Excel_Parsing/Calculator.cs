@@ -1,6 +1,8 @@
 using Antlr4.Runtime;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +10,11 @@ using System.Threading.Tasks;
 namespace Excel.Parsing;
 public static class Calculator
 {
-    static IDictionary<string, double> table = new Dictionary<string, double>();
+    public static Table TableP { get; }
 
+    static Calculator() {
+        TableP = new();
+    }
     public static bool Evaluate(string expression)
     {
         var lexer = new GrammarLexer(new AntlrInputStream(expression));
@@ -21,8 +26,8 @@ public static class Calculator
 
         var tree = parser.compileUnit();
 
-        var visitor = new GrammarVisitor(table);
+        var visitor = new GrammarVisitor();
 
-        return visitor.Visit(tree) != 0;
+        return visitor.Visit(tree);
     }
 }

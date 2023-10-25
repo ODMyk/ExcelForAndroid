@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Excel.Parsing\Excel.Parsing.csproj" />
+    <ProjectReference Include="..\Excel_Parsing\Excel.Parsing.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel.Parsing/Grammar.g4 by ANTLR 4.13.1
+// Generated from /home/dmyko/Documents/Programming/dotnet/ExcelForAndroid/src/Excel_Parsing/Grammar.g4 by ANTLR 4.13.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -31,14 +31,15 @@ using Antlr4.Runtime.Tree;
 using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.13.1")]
-//[System.CLSCompliant(false)]
+// [System.CLSCompliant(false)]
 public partial class GrammarParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
-		NUMBER=1, IDENTIFIER=2, INT=3, EXPONENT=4, MULTIPLY=5, DIVIDE=6, SUBTRACT=7, 
-		ADD=8, LPAREN=9, RPAREN=10, LESS=11, GREATER=12, LESS_EQUAL=13, GREATER_EQUAL=14, 
-		EQUAL=15, NOT_EQUAL=16, NOT=17, OR=18, AND=19, WS=20;
+		NUMBER=1, BOOLEAN=2, IDENTIFIER=3, INT=4, TRUE=5, FALSE=6, MULTIPLY=7, 
+		DIVIDE=8, SUBTRACT=9, ADD=10, LPAREN=11, RPAREN=12, LESS=13, GREATER=14, 
+		LESS_EQUAL=15, GREATER_EQUAL=16, EQUAL=17, NOT_EQUAL=18, NOT=19, OR=20, 
+		AND=21, WS=22;
 	public const int
 		RULE_compileUnit = 0, RULE_expression = 1;
 	public static readonly string[] ruleNames = {
@@ -46,12 +47,13 @@ public partial class GrammarParser : Parser {
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, null, null, null, "'^'", "'*'", "'/'", "'-'", "'+'", "'('", "')'", 
-		"'<'", "'>'", "'<='", "'>='", "'=='", "'<>'", "'!'", "'||'", "'&&'"
+		null, null, null, null, null, null, null, "'*'", "'/'", "'-'", "'+'", 
+		"'('", "')'", "'<'", "'>'", "'<='", "'>='", "'=='", "'<>'", "'!'", "'||'", 
+		"'&&'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, "NUMBER", "IDENTIFIER", "INT", "EXPONENT", "MULTIPLY", "DIVIDE", 
-		"SUBTRACT", "ADD", "LPAREN", "RPAREN", "LESS", "GREATER", "LESS_EQUAL", 
+		null, "NUMBER", "BOOLEAN", "IDENTIFIER", "INT", "TRUE", "FALSE", "MULTIPLY", 
+		"DIVIDE", "SUBTRACT", "ADD", "LPAREN", "RPAREN", "LESS", "GREATER", "LESS_EQUAL", 
 		"GREATER_EQUAL", "EQUAL", "NOT_EQUAL", "NOT", "OR", "AND", "WS"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
@@ -201,32 +203,6 @@ public partial class GrammarParser : Parser {
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitLogicalOrExpr(this);
-			else return visitor.VisitChildren(this);
-		}
-	}
-	public partial class ExponentialExprContext : ExpressionContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext[] expression() {
-			return GetRuleContexts<ExpressionContext>();
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ExpressionContext expression(int i) {
-			return GetRuleContext<ExpressionContext>(i);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode EXPONENT() { return GetToken(GrammarParser.EXPONENT, 0); }
-		public ExponentialExprContext(ExpressionContext context) { CopyFrom(context); }
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void EnterRule(IParseTreeListener listener) {
-			IGrammarListener typedListener = listener as IGrammarListener;
-			if (typedListener != null) typedListener.EnterExponentialExpr(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override void ExitRule(IParseTreeListener listener) {
-			IGrammarListener typedListener = listener as IGrammarListener;
-			if (typedListener != null) typedListener.ExitExponentialExpr(this);
-		}
-		[System.Diagnostics.DebuggerNonUserCode]
-		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitExponentialExpr(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
@@ -429,6 +405,26 @@ public partial class GrammarParser : Parser {
 			else return visitor.VisitChildren(this);
 		}
 	}
+	public partial class BooleanExprContext : ExpressionContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode BOOLEAN() { return GetToken(GrammarParser.BOOLEAN, 0); }
+		public BooleanExprContext(ExpressionContext context) { CopyFrom(context); }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.EnterBooleanExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IGrammarListener typedListener = listener as IGrammarListener;
+			if (typedListener != null) typedListener.ExitBooleanExpr(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IGrammarVisitor<TResult> typedVisitor = visitor as IGrammarVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitBooleanExpr(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
 
 	[RuleVersion(0)]
 	public ExpressionContext expression() {
@@ -447,7 +443,7 @@ public partial class GrammarParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 16;
+			State = 17;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case LPAREN:
@@ -484,12 +480,21 @@ public partial class GrammarParser : Parser {
 				Match(NUMBER);
 				}
 				break;
+			case BOOLEAN:
+				{
+				_localctx = new BooleanExprContext(_localctx);
+				Context = _localctx;
+				_prevctx = _localctx;
+				State = 15;
+				Match(BOOLEAN);
+				}
+				break;
 			case IDENTIFIER:
 				{
 				_localctx = new IdentifierExprContext(_localctx);
 				Context = _localctx;
 				_prevctx = _localctx;
-				State = 15;
+				State = 16;
 				Match(IDENTIFIER);
 				}
 				break;
@@ -497,7 +502,7 @@ public partial class GrammarParser : Parser {
 				throw new NoViableAltException(this);
 			}
 			Context.Stop = TokenStream.LT(-1);
-			State = 41;
+			State = 39;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,2,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
@@ -506,28 +511,16 @@ public partial class GrammarParser : Parser {
 						TriggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					State = 39;
+					State = 37;
 					ErrorHandler.Sync(this);
 					switch ( Interpreter.AdaptivePredict(TokenStream,1,Context) ) {
 					case 1:
 						{
-						_localctx = new ExponentialExprContext(new ExpressionContext(_parentctx, _parentState));
-						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 18;
-						if (!(Precpred(Context, 9))) throw new FailedPredicateException(this, "Precpred(Context, 9)");
-						State = 19;
-						Match(EXPONENT);
-						State = 20;
-						expression(10);
-						}
-						break;
-					case 2:
-						{
 						_localctx = new MultiplicativeExprContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 21;
-						if (!(Precpred(Context, 8))) throw new FailedPredicateException(this, "Precpred(Context, 8)");
-						State = 22;
+						State = 19;
+						if (!(Precpred(Context, 9))) throw new FailedPredicateException(this, "Precpred(Context, 9)");
+						State = 20;
 						((MultiplicativeExprContext)_localctx).operatorToken = TokenStream.LT(1);
 						_la = TokenStream.LA(1);
 						if ( !(_la==MULTIPLY || _la==DIVIDE) ) {
@@ -537,17 +530,17 @@ public partial class GrammarParser : Parser {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
-						State = 23;
-						expression(9);
+						State = 21;
+						expression(10);
 						}
 						break;
-					case 3:
+					case 2:
 						{
 						_localctx = new AdditiveExprContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 24;
-						if (!(Precpred(Context, 7))) throw new FailedPredicateException(this, "Precpred(Context, 7)");
-						State = 25;
+						State = 22;
+						if (!(Precpred(Context, 8))) throw new FailedPredicateException(this, "Precpred(Context, 8)");
+						State = 23;
 						((AdditiveExprContext)_localctx).operatorToken = TokenStream.LT(1);
 						_la = TokenStream.LA(1);
 						if ( !(_la==SUBTRACT || _la==ADD) ) {
@@ -557,37 +550,37 @@ public partial class GrammarParser : Parser {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
-						State = 26;
-						expression(8);
+						State = 24;
+						expression(9);
 						}
 						break;
-					case 4:
+					case 3:
 						{
 						_localctx = new RelationalExprContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 27;
-						if (!(Precpred(Context, 6))) throw new FailedPredicateException(this, "Precpred(Context, 6)");
-						State = 28;
+						State = 25;
+						if (!(Precpred(Context, 7))) throw new FailedPredicateException(this, "Precpred(Context, 7)");
+						State = 26;
 						((RelationalExprContext)_localctx).operatorToken = TokenStream.LT(1);
 						_la = TokenStream.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 30720L) != 0)) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 122880L) != 0)) ) {
 							((RelationalExprContext)_localctx).operatorToken = ErrorHandler.RecoverInline(this);
 						}
 						else {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
-						State = 29;
-						expression(7);
+						State = 27;
+						expression(8);
 						}
 						break;
-					case 5:
+					case 4:
 						{
 						_localctx = new EqualityExprContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 30;
-						if (!(Precpred(Context, 5))) throw new FailedPredicateException(this, "Precpred(Context, 5)");
-						State = 31;
+						State = 28;
+						if (!(Precpred(Context, 6))) throw new FailedPredicateException(this, "Precpred(Context, 6)");
+						State = 29;
 						((EqualityExprContext)_localctx).operatorToken = TokenStream.LT(1);
 						_la = TokenStream.LA(1);
 						if ( !(_la==EQUAL || _la==NOT_EQUAL) ) {
@@ -597,38 +590,38 @@ public partial class GrammarParser : Parser {
 							ErrorHandler.ReportMatch(this);
 						    Consume();
 						}
+						State = 30;
+						expression(7);
+						}
+						break;
+					case 5:
+						{
+						_localctx = new LogicalAndExprContext(new ExpressionContext(_parentctx, _parentState));
+						PushNewRecursionContext(_localctx, _startState, RULE_expression);
+						State = 31;
+						if (!(Precpred(Context, 5))) throw new FailedPredicateException(this, "Precpred(Context, 5)");
 						State = 32;
+						Match(AND);
+						State = 33;
 						expression(6);
 						}
 						break;
 					case 6:
 						{
-						_localctx = new LogicalAndExprContext(new ExpressionContext(_parentctx, _parentState));
-						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 33;
-						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
-						State = 34;
-						Match(AND);
-						State = 35;
-						expression(5);
-						}
-						break;
-					case 7:
-						{
 						_localctx = new LogicalOrExprContext(new ExpressionContext(_parentctx, _parentState));
 						PushNewRecursionContext(_localctx, _startState, RULE_expression);
-						State = 36;
-						if (!(Precpred(Context, 3))) throw new FailedPredicateException(this, "Precpred(Context, 3)");
-						State = 37;
+						State = 34;
+						if (!(Precpred(Context, 4))) throw new FailedPredicateException(this, "Precpred(Context, 4)");
+						State = 35;
 						Match(OR);
-						State = 38;
-						expression(4);
+						State = 36;
+						expression(5);
 						}
 						break;
 					}
 					} 
 				}
-				State = 43;
+				State = 41;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,2,Context);
 			}
@@ -659,27 +652,25 @@ public partial class GrammarParser : Parser {
 		case 3: return Precpred(Context, 6);
 		case 4: return Precpred(Context, 5);
 		case 5: return Precpred(Context, 4);
-		case 6: return Precpred(Context, 3);
 		}
 		return true;
 	}
 
 	private static int[] _serializedATN = {
-		4,1,20,45,2,0,7,0,2,1,7,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-		1,1,3,1,17,8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,40,8,1,10,1,12,1,43,9,1,1,1,0,1,2,2,0,
-		2,0,4,1,0,5,6,1,0,7,8,1,0,11,14,1,0,15,16,52,0,4,1,0,0,0,2,16,1,0,0,0,
-		4,5,3,2,1,0,5,6,5,0,0,1,6,1,1,0,0,0,7,8,6,1,-1,0,8,9,5,9,0,0,9,10,3,2,
-		1,0,10,11,5,10,0,0,11,17,1,0,0,0,12,13,5,17,0,0,13,17,3,2,1,10,14,17,5,
-		1,0,0,15,17,5,2,0,0,16,7,1,0,0,0,16,12,1,0,0,0,16,14,1,0,0,0,16,15,1,0,
-		0,0,17,41,1,0,0,0,18,19,10,9,0,0,19,20,5,4,0,0,20,40,3,2,1,10,21,22,10,
-		8,0,0,22,23,7,0,0,0,23,40,3,2,1,9,24,25,10,7,0,0,25,26,7,1,0,0,26,40,3,
-		2,1,8,27,28,10,6,0,0,28,29,7,2,0,0,29,40,3,2,1,7,30,31,10,5,0,0,31,32,
-		7,3,0,0,32,40,3,2,1,6,33,34,10,4,0,0,34,35,5,19,0,0,35,40,3,2,1,5,36,37,
-		10,3,0,0,37,38,5,18,0,0,38,40,3,2,1,4,39,18,1,0,0,0,39,21,1,0,0,0,39,24,
-		1,0,0,0,39,27,1,0,0,0,39,30,1,0,0,0,39,33,1,0,0,0,39,36,1,0,0,0,40,43,
-		1,0,0,0,41,39,1,0,0,0,41,42,1,0,0,0,42,3,1,0,0,0,43,41,1,0,0,0,3,16,39,
-		41
+		4,1,22,43,2,0,7,0,2,1,7,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+		1,1,1,1,3,1,18,8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+		1,1,1,1,1,1,1,1,1,1,5,1,38,8,1,10,1,12,1,41,9,1,1,1,0,1,2,2,0,2,0,4,1,
+		0,7,8,1,0,9,10,1,0,13,16,1,0,17,18,50,0,4,1,0,0,0,2,17,1,0,0,0,4,5,3,2,
+		1,0,5,6,5,0,0,1,6,1,1,0,0,0,7,8,6,1,-1,0,8,9,5,11,0,0,9,10,3,2,1,0,10,
+		11,5,12,0,0,11,18,1,0,0,0,12,13,5,19,0,0,13,18,3,2,1,10,14,18,5,1,0,0,
+		15,18,5,2,0,0,16,18,5,3,0,0,17,7,1,0,0,0,17,12,1,0,0,0,17,14,1,0,0,0,17,
+		15,1,0,0,0,17,16,1,0,0,0,18,39,1,0,0,0,19,20,10,9,0,0,20,21,7,0,0,0,21,
+		38,3,2,1,10,22,23,10,8,0,0,23,24,7,1,0,0,24,38,3,2,1,9,25,26,10,7,0,0,
+		26,27,7,2,0,0,27,38,3,2,1,8,28,29,10,6,0,0,29,30,7,3,0,0,30,38,3,2,1,7,
+		31,32,10,5,0,0,32,33,5,21,0,0,33,38,3,2,1,6,34,35,10,4,0,0,35,36,5,20,
+		0,0,36,38,3,2,1,5,37,19,1,0,0,0,37,22,1,0,0,0,37,25,1,0,0,0,37,28,1,0,
+		0,0,37,31,1,0,0,0,37,34,1,0,0,0,38,41,1,0,0,0,39,37,1,0,0,0,39,40,1,0,
+		0,0,40,3,1,0,0,0,41,39,1,0,0,0,3,17,37,39
 	};
 
 	public static readonly ATN _ATN =

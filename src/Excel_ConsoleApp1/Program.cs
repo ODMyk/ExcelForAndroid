@@ -1,10 +1,14 @@
 ﻿using System;
 using Excel.Parsing;
+using System.Collections.Generic;
 
 namespace ConsoleApp1;
 
 class ConsoleCalculator
 {
+    static ConsoleCalculator() {
+        Cell.Table.Add("A1", new Cell.Cell("1+1"));
+    }
     static void Main()
     {
         string expression;
@@ -16,7 +20,7 @@ class ConsoleCalculator
             {
                 break;
             }
-            Console.WriteLine($"Result: {Calculator.Evaluate(expression)}");
+            Console.WriteLine($"Result: {Cell.Evaluate(expression)}");
         } while (true);
     }
 }

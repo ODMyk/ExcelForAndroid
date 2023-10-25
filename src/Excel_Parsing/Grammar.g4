@@ -5,7 +5,6 @@ compileUnit : expression EOF;
 expression :
 	LPAREN expression RPAREN #ParenthesizedExpr
 	| NOT expression #LogicalNotExpr
-	| expression EXPONENT expression #ExponentialExpr
     | expression operatorToken=(MULTIPLY | DIVIDE) expression #MultiplicativeExpr
 	| expression operatorToken=(ADD | SUBTRACT) expression #AdditiveExpr
 	| expression operatorToken=(LESS | LESS_EQUAL | GREATER | GREATER_EQUAL) expression #RelationalExpr
@@ -13,6 +12,7 @@ expression :
 	| expression AND expression #LogicalAndExpr
 	| expression OR expression #LogicalOrExpr
 	| NUMBER #NumberExpr
+	| BOOLEAN #BooleanExpr
 	| IDENTIFIER #IdentifierExpr
 	; 
 
@@ -20,12 +20,14 @@ expression :
  * Lexer Rules
  */
 
-NUMBER : INT ('.' INT)?; 
+NUMBER : INT ('.' INT)?;
+BOOLEAN : (TRUE | FALSE);
 IDENTIFIER : [a-zA-Z]+[1-9][0-9]*;
 
 INT : ('0'..'9')+;
 
-EXPONENT : '^';
+TRUE : ('T' | 't')('R' | 'r')('U' | 'u')('E' | 'e');
+FALSE : ('F' | 'f')'alse';
 MULTIPLY : '*';
 DIVIDE : '/';
 SUBTRACT : '-';
