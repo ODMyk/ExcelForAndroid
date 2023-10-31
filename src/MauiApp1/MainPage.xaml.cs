@@ -1,6 +1,7 @@
 ﻿using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Compatibility;
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using Grid = Microsoft.Maui.Controls.Grid;
 using Calculator = Excel.Parsing.Calculator;
@@ -149,8 +150,9 @@ public partial class MainPage : ContentPage
             {
                 var name = GetColumnName(column) + row.ToString();
                 var cell = Calculator.TableP.Cells[name];
-                if (cell.Expression != "")
+                if (cell.Expression != "" || cell.AppearsIn.Count() > 0)
                 {
+                    Debug.WriteLine($"{name}: {cell.AppearsIn.Count}");
                     table[name] = cell;
                 }
             }
@@ -220,7 +222,7 @@ public partial class MainPage : ContentPage
         {
             var cell = (Button)cells[pair.Key];
             Calculator.TableP.Cells[pair.Key] = pair.Value;
-            cell.Text = pair.Value.Value.ToString();
+            cell.Text = pair.Value.GetText();
         }
 
         if (representation.CountRow > 0 && representation.CountColumn > 0)

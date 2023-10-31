@@ -8,7 +8,7 @@ public class Cell
 
     public bool Value { get; set; }
 
-    public IList<string> AppearsIn { get; }
+    public IList<string> AppearsIn { get; set; }
 
     public IList<string> DependsOn { get; set; }
 
