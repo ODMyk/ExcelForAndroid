@@ -63,7 +63,8 @@ public class Table
     {
         // Returns true if expression is valid
         var cell = Cells[cellName];
-        if (cell == null) {
+        if (cell == null)
+        {
             return false;
         }
         var oldExpression = cell.Expression;

@@ -13,7 +13,8 @@ class JsonFileManager : IFileManager
 
     private FileResult openedFile;
 
-    public JsonFileManager() {
+    public JsonFileManager()
+    {
         Saver = FileSaver.Default;
         Loader = FilePicker.Default;
     }
@@ -26,7 +27,8 @@ class JsonFileManager : IFileManager
         //     return;
         // }
 
-        if (openedFile == null) {
+        if (openedFile == null)
+        {
             await SaveAs(representation);
             return;
         }
@@ -35,7 +37,8 @@ class JsonFileManager : IFileManager
         await JsonSerializer.SerializeAsync<FileRepresentation>(fileStream, representation);
     }
 
-    public async Task SaveAs(FileRepresentation representation) {
+    public async Task SaveAs(FileRepresentation representation)
+    {
         var text = JsonSerializer.Serialize<FileRepresentation>(representation);
         using var stream = new MemoryStream(Encoding.Default.GetBytes(text));
         openedFile = new FileResult((await Saver.SaveAsync("NewTable.json", stream, new CancellationTokenSource().Token)).FilePath);

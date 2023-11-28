@@ -6,7 +6,8 @@ namespace ConsoleApp1;
 
 class ConsoleCalculator
 {
-    static ConsoleCalculator() {
+    static ConsoleCalculator()
+    {
         Cell.Table.Add("A1", new Cell.Cell("1+1"));
     }
     static void Main()

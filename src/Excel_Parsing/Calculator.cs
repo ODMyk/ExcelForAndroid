@@ -12,7 +12,8 @@ public static class Calculator
 {
     public static Table TableP { get; }
 
-    static Calculator() {
+    static Calculator()
+    {
         TableP = new();
     }
     public static bool Evaluate(string expression)

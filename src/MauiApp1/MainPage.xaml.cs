@@ -48,11 +48,12 @@ public partial class MainPage : ContentPage
     {
         var col = Grid.GetColumn((View)element);
         var row = Grid.GetRow((View)element);
-        
+
         return GetCellName(row, col);
     }
 
-    private string GetCellName(int row, int column) {
+    private string GetCellName(int row, int column)
+    {
         if (column < 1 || row < 1)
         {
             throw new Exception("Out of bounds");
@@ -83,7 +84,7 @@ public partial class MainPage : ContentPage
             MoveFocus();
             return;
         }
-    
+
         entry.Text = Calculator.TableP.Cells[cellName].Expression;
         await DisplayAlert("Помилка", "Введено недопустимий вираз", "OK");
     }
@@ -116,7 +117,8 @@ public partial class MainPage : ContentPage
     {
         Refresh(cellName);
 
-        foreach (var name in Calculator.TableP.Cells[cellName].AppearsIn) {
+        foreach (var name in Calculator.TableP.Cells[cellName].AppearsIn)
+        {
             RefreshRecursively(name);
         }
     }
